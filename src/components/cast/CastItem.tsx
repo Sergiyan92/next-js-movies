@@ -1,4 +1,5 @@
-import defaultImg from '../../../../assets/noicon.png';
+import Image from "next/image";
+import defaultImg from "../../../public/default.png";
 
 type CastItemProps = {
   profile_path: string | null;
@@ -9,7 +10,7 @@ type CastItemProps = {
 const CastItem = ({ cast }: { cast: CastItemProps }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 max-w-xs">
-      <img
+      <Image
         className="w-24 h-24 object-cover rounded-full mx-auto"
         src={
           cast.profile_path
