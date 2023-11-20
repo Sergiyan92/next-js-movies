@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getAllmovies } from '../../../../service/service';
-import defaultImg from '../../../../assets/default.png';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { getAllmovies } from "../../../../service/service";
+import defaultImg from "../../../../assets/default.png";
 
 type Movie = {
   id: number;
@@ -23,24 +23,24 @@ const Trending = ({ trending }: TrendingProps) => {
       };
       fetchMovies();
     } catch (error) {
-      if (typeof error === 'string') {
+      if (typeof error === "string") {
         setMoviesError(error);
       } else {
-        setMoviesError('An error occurred');
+        setMoviesError("An error occurred");
       }
     }
   }, []);
 
   return (
     <ul className="flex flex-wrap pl-5 pr-5 justify-between">
-      {trending.map(movie => {
+      {trending.map((movie) => {
         return (
           <li
             className="border p-4 mb-5 w-[500px] text-center h-auto rounded-md"
             key={movie.id}
           >
             <Link
-              to={`/movies/${movie.id}`}
+              href={`/movies/${movie.id}`}
               className="text-blue-500 hover:underline"
             >
               <span className="text-lg">{movie.title}</span>

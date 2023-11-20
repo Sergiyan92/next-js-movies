@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 
 export const IfoItem = () => {
   return (
@@ -8,7 +8,7 @@ export const IfoItem = () => {
         <li className="mb-2">
           <Link
             className="text-blue-700 font-semibold hover:underline"
-            to="cast"
+            href="cast"
           >
             Cast
           </Link>
@@ -16,7 +16,7 @@ export const IfoItem = () => {
         <li>
           <Link
             className="text-blue-700 font-semibold hover:underline"
-            to="reviews"
+            href="reviews"
           >
             Reviews
           </Link>

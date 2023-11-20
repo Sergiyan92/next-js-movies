@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 interface Review {
@@ -15,7 +16,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
     <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex">
         <div className="md:flex-shrink-0">
-          <img
+          <Image
             className="h-48 w-full object-cover md:w-48"
             src="https://source.unsplash.com/random"
             alt="Review"
