@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 const Heder = () => {
   const pathname = usePathname();
   return (
-    <>
+    <div className=" ">
       <nav className="flex justify-center space-x-4">
         <Link className={`link ${pathname === "/" ? "active" : ""}`} href="/">
           top-20
@@ -16,7 +16,7 @@ const Heder = () => {
           Search-Movies
         </Link>
       </nav>
-    </>
+    </div>
   );
 };
 export default Heder;

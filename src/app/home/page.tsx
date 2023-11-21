@@ -1,6 +1,6 @@
 import Trending from "../../components/popular/Trending";
 import { useEffect, useState } from "react";
-// import { getAllmovies } from '../../../../service/service';
+import { getAllMovies } from "@/app/api/movies";
 interface Movie {
   id: number;
   title: string;
@@ -15,8 +15,8 @@ const Home = () => {
   useEffect(() => {
     const fetchTrending = async () => {
       try {
-        // const response: TrendingData = await getAllmovies();
-        // setTrending(response.trendingData);
+        const response: TrendingData = await getAllMovies();
+        setTrending(response.trendingData);
       } catch (error) {
         console.error(error);
       }

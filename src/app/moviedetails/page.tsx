@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import CardItem from "../../components/card/CardItem";
 import { IfoItem } from "../../components/info/InfoItem";
-// import { getMovieId } from "../../service/service";
+import { getMovieId } from "@/app/api/movies";
 
 const MovieDetails = () => {
   const router = useRouter();
@@ -19,9 +19,9 @@ const MovieDetails = () => {
       const id = Array.isArray(movieId)
         ? parseInt(movieId[0])
         : parseInt(movieId);
-      // getMovieId(id)
-      //   .then((data) => setDetails(data))
-      //   .catch((error) => console.log(error));
+      getMovieId(id)
+        .then((data) => setDetails(data))
+        .catch((error) => console.log(error));
     }
   }, [movieId]);
 

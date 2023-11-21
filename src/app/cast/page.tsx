@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CastItem from "../../components/cast/CastItem";
 import { useRouter } from "next/router";
-// import { getCast } from "../../../../service/service";
+import { getCast } from "@/app/api/movies";
 
 interface Cast {
   id: number;
@@ -22,9 +22,9 @@ const Cast = () => {
   useEffect(() => {
     if (movieId) {
       const id = parseInt(movieId as string, 10);
-      // getCast(id)
-      //   .then((data) => setData(data))
-      //   .catch((error) => console.error(error));
+      getCast(id)
+        .then((data) => setData(data))
+        .catch((error) => console.error(error));
     }
   }, [movieId]);
 

@@ -1,12 +1,12 @@
 // pages/movies.js
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Searchbar from "../../components/searchform/SearchForm";
 import Link from "next/link";
 import defaultImg from "../../../public/default.png";
-// import { getMovies } from "../service/service";
+import { getMovies } from "@/app/api/movies";
 
 interface Movie {
   id: number;
@@ -18,19 +18,20 @@ const Movies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setMoviesError] = useState<string | null>(null);
   const router = useRouter();
-  const query = router;
+  const params = useSearchParams();
+  const query = params.get("query");
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         if (query) {
-          // const { movieData } = await getMovies(query);
-          // const moviesWithPosterPath = movieData.map((movie) => ({
-          //   id: movie.id,
-          //   title: movie.title,
-          //   poster_path: movie.poster_path || "",
-          // }));
-          // setMovies(moviesWithPosterPath);
+          const { movieData } = await getMovies(query);
+          const moviesWithPosterPath = movieData.map((movie: Movie) => ({
+            id: movie.id,
+            title: movie.title,
+            poster_path: movie.poster_path || "",
+          }));
+          setMovies(moviesWithPosterPath);
         }
       } catch (error) {
         if (typeof error === "string") {
@@ -63,7 +64,7 @@ const Movies = () => {
             key={movie.id}
           >
             <Link href={`/movies/${movie.id}`} passHref>
-              <a className="text-blue-500 hover:underline">
+              <div className="text-blue-500 hover:underline">
                 <span className="text-lg">{movie.title}</span>
                 <Image
                   className="mb-4"
@@ -73,8 +74,10 @@ const Movies = () => {
                       : defaultImg
                   }
                   alt={movie.poster_path || "Poster"}
+                  width={100}
+                  height={50}
                 />
-              </a>
+              </div>
             </Link>
           </li>
         ))}
