@@ -12,23 +12,25 @@ const CardItem = ({ card }: { card: Card }) => {
       <Image
         className="w-full rounded-lg mb-4"
         src={
-          card.backdrop_path
+          card?.backdrop_path
             ? `https://image.tmdb.org/t/p/original/${card.backdrop_path}`
             : defaultImg
         }
-        alt={card.original_title}
+        alt={card?.original_title}
+        width={500}
+        height={700}
       />
       <div className="text-gray-800">
-        <h3 className="text-2xl font-bold mb-2">{card.original_title}</h3>
+        <h3 className="text-2xl font-bold mb-2">{card?.original_title}</h3>
 
         <div className="mb-4">
           <h4 className="text-lg font-semibold">Overview</h4>
-          <p className="text-sm">{card.overview}</p>
+          <p className="text-sm">{card?.overview}</p>
         </div>
         <div>
           <h4 className="text-lg font-semibold">Genres</h4>
           <ul className="list-disc list-inside">
-            {card.genres?.map((genre, index) => (
+            {card?.genres?.map((genre, index) => (
               <li key={index} className="text-sm">
                 {genre.name}
               </li>
