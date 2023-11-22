@@ -74,8 +74,8 @@ const Movies = () => {
                       : defaultImg
                   }
                   alt={movie.poster_path || "Poster"}
-                  width={100}
-                  height={50}
+                  width={466}
+                  height={700}
                 />
               </div>
             </Link>
