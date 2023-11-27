@@ -17,6 +17,8 @@ const CardItem = ({ card }: { card: Card }) => {
             : defaultImg
         }
         alt={card?.original_title}
+        quality={100}
+        priority={true}
         width={500}
         height={700}
       />

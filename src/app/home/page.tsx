@@ -1,15 +1,17 @@
+"use client";
 import Trending from "../../components/popular/Trending";
 import { useEffect, useState } from "react";
 import { getAllMovies } from "@/app/api/movies";
+
 interface Movie {
   id: number;
   title: string;
   poster_path: string;
 }
 interface TrendingData {
-  trendingData: Movie[]; // Замініть `any` на відповідний тип, якщо відомо
+  trendingData: Movie[];
 }
-const Home = () => {
+const HomePage = () => {
   const [trending, setTrending] = useState<Movie[]>([]);
 
   useEffect(() => {
@@ -33,4 +35,4 @@ const Home = () => {
     </>
   );
 };
-export default Home;
+export default HomePage;

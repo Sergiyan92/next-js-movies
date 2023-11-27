@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getAllmovies } from "../../../../service/service";
-import defaultImg from "../../../../assets/default.png";
+import { getAllMovies } from "../.././app/api/movies";
+import defaultImg from "../../../public/default.png";
+import Image from "next/image";
 
 type Movie = {
   id: number;
@@ -19,7 +20,7 @@ const Trending = ({ trending }: TrendingProps) => {
   useEffect(() => {
     try {
       const fetchMovies = async () => {
-        await getAllmovies();
+        await getAllMovies();
       };
       fetchMovies();
     } catch (error) {
@@ -44,7 +45,7 @@ const Trending = ({ trending }: TrendingProps) => {
               className="text-blue-500 hover:underline"
             >
               <span className="text-lg">{movie.title}</span>
-              <img
+              <Image
                 className="mb-4"
                 src={
                   movie.poster_path
@@ -52,6 +53,10 @@ const Trending = ({ trending }: TrendingProps) => {
                     : defaultImg
                 }
                 alt={movie.poster_path}
+                quality={100}
+                priority={true}
+                width={500}
+                height={700}
               />
             </Link>
           </li>
