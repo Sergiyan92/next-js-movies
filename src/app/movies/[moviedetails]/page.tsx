@@ -8,6 +8,7 @@ import { IfoItem } from "../../../components/info/InfoItem";
 import { getMovieId } from "@/app/api/movies";
 
 type MovieDetails = {
+  moviedetails: string;
   backdrop_path: string | null;
   original_title: string;
   overview: string;
@@ -46,7 +47,7 @@ const MovieDetails = () => {
         </div>
       </Link>
       <CardItem card={details} />
-      <IfoItem movieId={""} />
+      <IfoItem movieId={moviedetails} />
     </div>
   );
 };
