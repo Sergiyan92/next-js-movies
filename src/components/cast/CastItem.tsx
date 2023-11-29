@@ -18,6 +18,8 @@ const CastItem = ({ cast }: { cast: CastItemProps }) => {
             : defaultImg
         }
         alt={cast.name}
+        width={500}
+        height={700}
       />
       <h3 className="text-xl font-medium text-gray-800 text-center mt-4">
         {cast.name}

@@ -1,7 +1,8 @@
+"use client";
 import { useState, useEffect } from "react";
-import CastItem from "../../components/cast/CastItem";
-import { useRouter } from "next/router";
+import CastItem from "../../../../components/cast/CastItem";
 import { getCast } from "@/app/api/movies";
+import { useParams, useRouter } from "next/navigation";
 
 interface Cast {
   id: number;
@@ -16,17 +17,22 @@ interface CastData {
 
 const Cast = () => {
   const router = useRouter();
-  const { movieId } = router.query;
+  console.log(router);
+  // const { movieId } = router.query;
+  const params = useParams();
+  const { moviedetails } = useParams<{ moviedetails: string }>();
+  console.log(params);
   const [data, setData] = useState<CastData | null>(null);
 
   useEffect(() => {
-    if (movieId) {
-      const id = parseInt(movieId as string, 10);
+    if (moviedetails) {
+      const id = parseInt(moviedetails);
+      console.log(id);
       getCast(id)
         .then((data) => setData(data))
         .catch((error) => console.error(error));
     }
-  }, [movieId]);
+  }, [moviedetails]);
 
   return (
     <div className="container mx-auto p-4">
