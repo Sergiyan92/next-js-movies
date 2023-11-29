@@ -1,4 +1,5 @@
-// pages/reviews.js
+/* eslint-disable react/no-unescaped-entities */
+"use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Review from "../../components/review/Review";
