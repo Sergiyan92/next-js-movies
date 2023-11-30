@@ -1,11 +1,11 @@
 "use client";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-
 import Link from "next/link";
 import CardItem from "../../../components/card/CardItem";
-import { IfoItem } from "../../../components/info/InfoItem";
 import { getMovieId } from "@/app/api/movies";
+import Cast from "./cast/page";
+import Reviews from "./reviews/page";
 
 type MovieDetails = {
   moviedetails: string;
@@ -24,8 +24,7 @@ const MovieDetails = () => {
 
   const { moviedetails } = useParams<{ moviedetails: string }>();
   const [details, setDetails] = useState<MovieDetails | null>(null);
-
-  const back = useRef(router.back || "/");
+  const [selectedTab, setSelectedTab] = useState<string | null>(null);
 
   useEffect(() => {
     if (moviedetails) {
@@ -37,17 +36,39 @@ const MovieDetails = () => {
     }
   }, [moviedetails]);
 
+  const handleTabChange = (tab: string) => {
+    setSelectedTab(tab);
+  };
+  const handleGoBack = () => {
+    router.back();
+  };
+
   if (!details) return;
 
   return (
     <div className="mx-auto p-4">
-      <Link href={back.current.toString()}>
-        <div className="text-blue-500 text-lg hover:underline mb-4 block">
-          Back
-        </div>
-      </Link>
+      <button
+        onClick={() => handleGoBack()}
+        className="text-blue-700 font-semibold hover:underline mr-2"
+      >
+        Back
+      </button>
       <CardItem card={details} />
-      <IfoItem moviedetails={moviedetails} />
+      <h4 className="text-2xl font-bold mb-4">Additional information</h4>
+      <div className="mb-4">
+        <button onClick={() => handleTabChange("cast")}>
+          <span className="text-blue-700 font-semibold hover:underline mr-2">
+            Cast
+          </span>
+        </button>
+        <button onClick={() => handleTabChange("reviews")}>
+          <span className="text-blue-700 font-semibold hover:underline">
+            Reviews
+          </span>
+        </button>
+      </div>
+      {selectedTab === "cast" && <Cast />}
+      {selectedTab === "reviews" && <Reviews />}
     </div>
   );
 };

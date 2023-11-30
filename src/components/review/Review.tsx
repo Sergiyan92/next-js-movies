@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
 interface Review {
   id: number;
@@ -20,6 +20,8 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
             className="h-48 w-full object-cover md:w-48"
             src="https://source.unsplash.com/random"
             alt="Review"
+            width={300}
+            height={500}
           />
         </div>
         <div className="p-8">

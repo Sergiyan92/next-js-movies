@@ -16,11 +16,9 @@ interface CastData {
 }
 
 const Cast = () => {
-  const router = useRouter();
-  console.log(router);
   const params = useParams();
   const { moviedetails } = useParams<{ moviedetails: string }>();
-  console.log(params);
+
   const [data, setData] = useState<CastData | null>(null);
 
   useEffect(() => {

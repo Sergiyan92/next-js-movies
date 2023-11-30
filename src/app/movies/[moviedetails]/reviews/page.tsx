@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+
 import Review from "../../../../components/review/Review";
 import { getMovieIdReviews } from "@/app/api/movies";
 import { useParams } from "next/navigation";
@@ -17,8 +17,6 @@ interface ReviewData {
 }
 
 const Reviews = () => {
-  // const router = useRouter();
-  const params = useParams();
   const { moviedetails } = useParams<{ moviedetails: string }>();
   const [data, setData] = useState<ReviewData | null>(null);
 
