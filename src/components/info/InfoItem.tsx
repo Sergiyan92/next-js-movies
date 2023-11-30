@@ -16,7 +16,7 @@ export const IfoItem = ({ moviedetails }: IfoItemProps) => {
             as={`/movies/${moviedetails}/cast`}
           >
             <div className="text-blue-700 font-semibold hover:underline">
-              Акторський склад
+              Cast
             </div>
           </Link>
         </li>
@@ -26,7 +26,7 @@ export const IfoItem = ({ moviedetails }: IfoItemProps) => {
             as={`/movies/${moviedetails}/reviews`}
           >
             <div className="text-blue-700 font-semibold hover:underline">
-              Відгуки
+              Review
             </div>
           </Link>
         </li>
