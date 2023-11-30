@@ -47,7 +47,7 @@ const MovieDetails = () => {
         </div>
       </Link>
       <CardItem card={details} />
-      <IfoItem movieId={moviedetails} />
+      <IfoItem moviedetails={moviedetails} />
     </div>
   );
 };

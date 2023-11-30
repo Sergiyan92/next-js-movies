@@ -18,7 +18,6 @@ interface CastData {
 const Cast = () => {
   const router = useRouter();
   console.log(router);
-  // const { movieId } = router.query;
   const params = useParams();
   const { moviedetails } = useParams<{ moviedetails: string }>();
   console.log(params);

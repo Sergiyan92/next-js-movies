@@ -2,8 +2,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Review from "../../components/review/Review";
-// import { getMovieIdReviews } from "../service/service";
+import Review from "../../../../components/review/Review";
+import { getMovieIdReviews } from "@/app/api/movies";
+import { useParams } from "next/navigation";
 
 interface Reviews {
   id: number;
@@ -16,17 +17,18 @@ interface ReviewData {
 }
 
 const Reviews = () => {
-  const router = useRouter();
-  const { movieId } = router.query;
+  // const router = useRouter();
+  const params = useParams();
+  const { moviedetails } = useParams<{ moviedetails: string }>();
   const [data, setData] = useState<ReviewData | null>(null);
 
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        if (movieId) {
-          const id = parseInt(movieId as string);
-          // const response = await getMovieIdReviews(id);
-          // setData(response);
+        if (moviedetails) {
+          const id = parseInt(moviedetails as string);
+          const response = await getMovieIdReviews(id);
+          setData(response);
         }
       } catch (error) {
         console.error(error);
@@ -34,7 +36,7 @@ const Reviews = () => {
     };
 
     fetchReviews();
-  }, [movieId]);
+  }, [moviedetails]);
 
   return (
     <div className="max-w-2xl mx-auto p-4">
