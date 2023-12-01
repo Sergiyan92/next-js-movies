@@ -1,7 +1,7 @@
 "use client";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+
 import CardItem from "../../../components/card/CardItem";
 import { getMovieId } from "@/app/api/movies";
 import Cast from "./cast/page";

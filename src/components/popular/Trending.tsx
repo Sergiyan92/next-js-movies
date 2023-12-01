@@ -33,37 +33,39 @@ const Trending = ({ trending }: TrendingProps) => {
   }, []);
 
   return (
-    <ul className="flex flex-wrap pl-5 pr-5 justify-between">
-      {trending.map((movie) => {
-        return (
-          <li
-            className="border p-4 mb-5 w-[500px] text-center h-auto rounded-md"
-            key={movie.id}
-          >
-            <Link
-              href={`/movies/${movie.id}`}
-              className="text-blue-500 hover:underline"
+    <>
+      <ul className="flex flex-wrap pl-5 pr-5 justify-between">
+        {trending.map((movie) => {
+          return (
+            <li
+              className="border p-4 mb-5 w-[500px] text-center h-auto rounded-md"
+              key={movie.id}
             >
-              <span className="text-lg">{movie.title}</span>
-              <Image
-                className="mb-4"
-                src={
-                  movie.poster_path
-                    ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                    : defaultImg
-                }
-                alt={movie.poster_path}
-                priority
-                quality={100}
-                width={500}
-                height={700}
-              />
-            </Link>
-          </li>
-        );
-      })}
-      {error && <p className="text-red-500">Sorry. {error} ... 😭</p>}
-    </ul>
+              <Link
+                href={`/movies/${movie.id}`}
+                className="text-blue-500 hover:underline"
+              >
+                <span className="text-lg">{movie.title}</span>
+                <Image
+                  className="mb-4"
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                      : defaultImg
+                  }
+                  alt={movie.poster_path}
+                  priority
+                  quality={100}
+                  width={500}
+                  height={700}
+                />
+              </Link>
+            </li>
+          );
+        })}
+        {error && <p className="text-red-500">Sorry. {error} ... 😭</p>}
+      </ul>
+    </>
   );
 };
 
