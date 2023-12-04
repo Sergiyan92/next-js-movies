@@ -38,14 +38,14 @@ const Trending = ({ trending }: TrendingProps) => {
         {trending.map((movie) => {
           return (
             <li
-              className="border p-4 mb-5 w-[500px] text-center h-auto rounded-md"
+              className="border p-4 mb-5  text-center h-auto rounded-md"
               key={movie.id}
             >
               <Link
                 href={`/movies/${movie.id}`}
                 className="text-blue-500 hover:underline"
               >
-                <span className="text-lg">{movie.title}</span>
+                <span className="text-lg text-center">{movie.title}</span>
                 <Image
                   className="mb-4"
                   src={
@@ -56,8 +56,8 @@ const Trending = ({ trending }: TrendingProps) => {
                   alt={movie.poster_path}
                   priority
                   quality={100}
-                  width={500}
-                  height={700}
+                  width={300}
+                  height={500}
                 />
               </Link>
             </li>
